@@ -15,15 +15,23 @@ export default function Navbar() {
 
       {/* Center links */}
       <div className="flex gap-8 items-center">
-        {["FEATURES", "PRICING", "ABOUT"].map((item) => (
-          <a
-            key={item}
-            href="#"
-            className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline"
-          >
-            {item}
-          </a>
-        ))}
+        {status === "authenticated" ? (
+          <>
+            {[{ label: "DASHBOARD", href: "/dashboard" }, { label: "MESSAGES", href: "/messages" }, { label: "PROFILE", href: "/profile" }].map(({ label, href }) => (
+              <Link key={label} href={href} className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline">
+                {label}
+              </Link>
+            ))}
+          </>
+        ) : (
+          <>
+            {["FEATURES", "PRICING", "ABOUT"].map((item) => (
+              <a key={item} href="#" className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline">
+                {item}
+              </a>
+            ))}
+          </>
+        )}
       </div>
 
       {/* Auth buttons */}

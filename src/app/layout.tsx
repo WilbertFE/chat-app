@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Syne, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Providers from "@/components/providers";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -30,7 +31,9 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", syne.variable, ibmPlexMono.variable)}
     >
-      <body className="min-h-full flex flex-col font-mono">{children}</body>
+      <body className="min-h-full flex flex-col font-mono">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

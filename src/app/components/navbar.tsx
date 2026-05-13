@@ -1,8 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
+  const { status } = useSession();
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-b-black flex items-center justify-between px-8 h-[60px] font-mono">
       {/* Logo */}
@@ -24,20 +27,22 @@ export default function Navbar() {
       </div>
 
       {/* Auth buttons */}
-      <div className="flex gap-[10px] items-center">
-        <Link
-          href="/signin"
-          className="py-2 px-[18px] border-2 border-black bg-white shadow-neo-sm font-mono font-bold text-[0.8rem] text-neo-text no-underline inline-block neo-btn-hover"
-        >
-          Sign In
-        </Link>
-        <Link
-          href="/signup"
-          className="py-2 px-[18px] border-2 border-black bg-neo-orange shadow-neo-sm font-mono font-bold text-[0.8rem] text-white no-underline inline-block uppercase neo-btn-hover"
-        >
-          Sign Up
-        </Link>
-      </div>
+      {status !== "authenticated" && (
+        <div className="flex gap-[10px] items-center">
+          <Link
+            href="/signin"
+            className="py-2 px-[18px] border-2 border-black bg-white shadow-neo-sm font-mono font-bold text-[0.8rem] text-neo-text no-underline inline-block neo-btn-hover"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/signup"
+            className="py-2 px-[18px] border-2 border-black bg-neo-orange shadow-neo-sm font-mono font-bold text-[0.8rem] text-white no-underline inline-block uppercase neo-btn-hover"
+          >
+            Sign Up
+          </Link>
+        </div>
+      )}
     </nav>
   );
 }

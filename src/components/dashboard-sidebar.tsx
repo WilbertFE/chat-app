@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus } from "lucide-react";
+import { signOut } from "next-auth/react";
 import { currentUser } from "@/lib/mock-data";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 type ActiveRoute = "messages" | "servers" | "profile" | "help";
 
@@ -23,81 +26,29 @@ export default function DashboardSidebar({
   showNewServerButton = false,
 }: DashboardSidebarProps) {
   return (
-    <div
-      style={{
-        width: "260px",
-        minWidth: "260px",
-        backgroundColor: "#fde8e0",
-        borderRight: "2px solid #000",
-        display: "flex",
-        flexDirection: "column",
-        fontFamily: "var(--font-ibm), monospace",
-        height: "100%",
-      }}
-    >
+    <div className="w-[260px] min-w-[260px] bg-neo-sidebar border-r-2 border-r-black flex flex-col font-mono h-full">
       {/* Header */}
-      <div
-        style={{
-          padding: "16px",
-          borderBottom: "2px solid #000",
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          flexShrink: 0,
-        }}
-      >
-        <div
-          style={{
-            width: "32px",
-            height: "32px",
-            backgroundColor: "#ff5c00",
-            border: "2px solid #000",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
-        >
+      <div className="p-4 border-b-2 border-b-black flex items-center gap-2.5 shrink-0">
+        <div className="w-8 h-8 bg-neo-orange border-2 border-black flex items-center justify-center">
           <Grid3x3 size={16} color="#fff" />
         </div>
-        <span
-          style={{
-            fontFamily: "var(--font-ibm), monospace",
-            fontWeight: 700,
-            fontSize: "0.95rem",
-            letterSpacing: "0.05em",
-          }}
-        >
-          NEOCHAT
-        </span>
+        <span className="font-bold text-[0.95rem] tracking-[0.05em]">NEOCHAT</span>
       </div>
 
       {/* Nav Items */}
-      <nav style={{ padding: "8px 0" }}>
+      <nav className="py-2">
         {navItems.map(({ key, label, icon: Icon, href }) => {
           const isActive = activeRoute === key;
           return (
             <Link
               key={key}
               href={href}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "10px 16px",
-                fontWeight: isActive ? 700 : 400,
-                fontSize: "0.9rem",
-                backgroundColor: isActive ? "#ffde00" : "transparent",
-                borderLeft: isActive ? "3px solid #000" : "3px solid transparent",
-                color: "#0d0d0d",
-                textDecoration: "none",
-                transition: "background 0.1s",
-              }}
-              onMouseEnter={(e) => {
-                if (!isActive) e.currentTarget.style.backgroundColor = "rgba(0,0,0,0.05)";
-              }}
-              onMouseLeave={(e) => {
-                if (!isActive) e.currentTarget.style.backgroundColor = "transparent";
-              }}
+              className={cn(
+                "flex items-center gap-2.5 py-2.5 px-4 text-[0.9rem] text-neo-text no-underline transition-colors duration-100 border-l-[3px]",
+                isActive
+                  ? "font-bold bg-neo-yellow border-l-black"
+                  : "font-normal bg-transparent border-l-transparent hover:bg-black/5"
+              )}
             >
               <Icon size={18} />
               {label}
@@ -106,94 +57,42 @@ export default function DashboardSidebar({
         })}
       </nav>
 
-      {/* New Server button — sits right below nav items */}
+      {/* New Server button */}
       {showNewServerButton && (
-        <div style={{ padding: "10px 16px", borderTop: "1px solid rgba(0,0,0,0.12)" }}>
-          <button
-            style={{
-              width: "100%",
-              backgroundColor: "#ff5c00",
-              border: "2px solid #000",
-              boxShadow: "3px 3px 0 #000",
-              color: "#fff",
-              fontFamily: "var(--font-ibm), monospace",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              padding: "8px 12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-              cursor: "pointer",
-              letterSpacing: "0.05em",
-            }}
-            className="neo-btn-hover"
-          >
+        <div className="py-2.5 px-4 border-t border-t-black/[0.12]">
+          <Button className="w-full bg-neo-orange hover:bg-neo-orange text-white border-2 border-black shadow-neo-sm font-bold text-[0.8rem] uppercase tracking-[0.05em] neo-btn-hover flex items-center justify-center gap-1.5">
             <Plus size={14} />
             NEW SERVER
-          </button>
+          </Button>
         </div>
       )}
 
       {/* Spacer */}
-      <div style={{ flex: 1 }} />
+      <div className="flex-1" />
 
       {/* Bottom user area */}
-      <div style={{ borderTop: "2px solid #000", padding: "12px 16px", flexShrink: 0 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-          <div
-            style={{
-              position: "relative",
-              width: "40px",
-              height: "40px",
-              border: "2px solid #000",
-              backgroundColor: "#ff5c00",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-              fontWeight: 700,
-              color: "#fff",
-              fontSize: "0.75rem",
-            }}
-          >
+      <div className="border-t-2 border-t-black py-3 px-4 shrink-0">
+        <div className="flex items-center gap-2.5 mb-2">
+          <div className="relative w-10 h-10 border-2 border-black bg-neo-orange flex items-center justify-center shrink-0 font-bold text-white text-xs">
             {currentUser.initials}
-            <span
-              style={{
-                position: "absolute",
-                bottom: "-3px",
-                right: "-3px",
-                width: "10px",
-                height: "10px",
-                backgroundColor: "#00c853",
-                border: "2px solid #000",
-                borderRadius: "50%",
-              }}
-            />
+            <span className="absolute -bottom-[3px] -right-[3px] w-2.5 h-2.5 bg-neo-green border-2 border-black rounded-full" />
           </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontWeight: 700, fontSize: "0.85rem", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+          <div className="flex-1 min-w-0">
+            <div className="font-bold text-[0.85rem] overflow-hidden text-ellipsis whitespace-nowrap">
               {currentUser.name}
             </div>
-            <div style={{ fontSize: "0.75rem", color: "#555", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            <div className="text-xs text-neo-muted overflow-hidden text-ellipsis whitespace-nowrap">
               {currentUser.handle}
             </div>
           </div>
         </div>
-        <Link
-          href="/signin"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-            fontSize: "0.8rem",
-            color: "#555",
-            textDecoration: "none",
-          }}
+        <button
+          onClick={() => signOut({ callbackUrl: "/signin" })}
+          className="flex items-center gap-1.5 text-[0.8rem] text-neo-muted bg-transparent border-none p-0 cursor-pointer"
         >
           <LogOut size={14} />
           Logout
-        </Link>
+        </button>
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ export default function CoverBanner() {
   return (
     <div
       style={{
-        height: "200px",
+        height: "240px",
         position: "relative",
         border: "2px solid #000",
         borderLeft: "none",

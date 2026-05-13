@@ -10,32 +10,33 @@ export default function ProfilePage() {
     <div
       style={{
         display: "flex",
-        height: "100vh",
-        overflow: "hidden",
+        minHeight: "100vh",
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar activeRoute="profile" />
-
-      {/* Main content */}
+      {/* Sidebar stays fixed while page scrolls */}
       <div
         style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          overflowY: "auto",
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          flexShrink: 0,
         }}
       >
+        <DashboardSidebar activeRoute="profile" />
+      </div>
+
+      {/* Main content — full natural height, browser scrolls the page */}
+      <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <CoverBanner />
         <ProfileHeader />
 
-        {/* Content grid */}
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 340px",
             gap: "24px",
-            padding: "24px 32px",
+            padding: "32px 32px",
             flex: 1,
           }}
         >

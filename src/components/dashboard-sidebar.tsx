@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus, Mic, Headphones } from "lucide-react";
+import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus } from "lucide-react";
 import { currentUser } from "@/lib/mock-data";
 
 type ActiveRoute = "messages" | "servers" | "profile" | "help";
 
 interface DashboardSidebarProps {
   activeRoute: ActiveRoute;
-  showNewServerTopButton?: boolean;
-  showAudioControls?: boolean;
+  showNewServerButton?: boolean;
 }
 
 const navItems = [
@@ -21,8 +20,7 @@ const navItems = [
 
 export default function DashboardSidebar({
   activeRoute,
-  showNewServerTopButton = false,
-  showAudioControls = false,
+  showNewServerButton = false,
 }: DashboardSidebarProps) {
   return (
     <div
@@ -45,6 +43,7 @@ export default function DashboardSidebar({
           display: "flex",
           alignItems: "center",
           gap: "10px",
+          flexShrink: 0,
         }}
       >
         <div
@@ -72,37 +71,8 @@ export default function DashboardSidebar({
         </span>
       </div>
 
-      {/* New Server top button */}
-      {showNewServerTopButton && (
-        <div style={{ padding: "12px 16px", borderBottom: "2px solid #000" }}>
-          <button
-            style={{
-              width: "100%",
-              backgroundColor: "#ff5c00",
-              border: "2px solid #000",
-              boxShadow: "3px 3px 0 #000",
-              color: "#fff",
-              fontFamily: "var(--font-ibm), monospace",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              padding: "8px 12px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "6px",
-              cursor: "pointer",
-              letterSpacing: "0.05em",
-            }}
-            className="neo-btn-hover"
-          >
-            <Plus size={14} />
-            NEW SERVER
-          </button>
-        </div>
-      )}
-
       {/* Nav Items */}
-      <nav style={{ padding: "8px 0", flex: 1 }}>
+      <nav style={{ padding: "8px 0" }}>
         {navItems.map(({ key, label, icon: Icon, href }) => {
           const isActive = activeRoute === key;
           return (
@@ -134,77 +104,42 @@ export default function DashboardSidebar({
             </Link>
           );
         })}
-
-        {/* Channels (servers view only) */}
-        {activeRoute === "servers" && (
-          <div style={{ marginTop: "8px", borderTop: "1px solid rgba(0,0,0,0.15)" }}>
-            <div
-              style={{
-                padding: "10px 16px 4px",
-                fontSize: "0.7rem",
-                fontWeight: 700,
-                letterSpacing: "0.1em",
-                color: "#555",
-                textTransform: "uppercase",
-              }}
-            >
-              Channels
-            </div>
-            {["showcase", "general", "random"].map((ch, i) => (
-              <div
-                key={ch}
-                style={{
-                  padding: "7px 16px",
-                  fontSize: "0.875rem",
-                  cursor: "pointer",
-                  fontWeight: i === 0 ? 700 : 400,
-                  color: i === 0 ? "#ff5c00" : "#0d0d0d",
-                  backgroundColor: i === 0 ? "rgba(255,92,0,0.08)" : "transparent",
-                }}
-              >
-                # {ch}
-              </div>
-            ))}
-          </div>
-        )}
       </nav>
 
+      {/* New Server button — sits right below nav items */}
+      {showNewServerButton && (
+        <div style={{ padding: "10px 16px", borderTop: "1px solid rgba(0,0,0,0.12)" }}>
+          <button
+            style={{
+              width: "100%",
+              backgroundColor: "#ff5c00",
+              border: "2px solid #000",
+              boxShadow: "3px 3px 0 #000",
+              color: "#fff",
+              fontFamily: "var(--font-ibm), monospace",
+              fontWeight: 700,
+              fontSize: "0.8rem",
+              padding: "8px 12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "6px",
+              cursor: "pointer",
+              letterSpacing: "0.05em",
+            }}
+            className="neo-btn-hover"
+          >
+            <Plus size={14} />
+            NEW SERVER
+          </button>
+        </div>
+      )}
+
+      {/* Spacer */}
+      <div style={{ flex: 1 }} />
+
       {/* Bottom user area */}
-      <div style={{ borderTop: "2px solid #000", padding: "12px 16px" }}>
-        {showAudioControls && (
-          <div style={{ display: "flex", gap: "8px", marginBottom: "10px" }}>
-            <button
-              style={{
-                width: "36px",
-                height: "36px",
-                border: "2px solid #000",
-                backgroundColor: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
-              aria-label="Microphone"
-            >
-              <Mic size={16} />
-            </button>
-            <button
-              style={{
-                width: "36px",
-                height: "36px",
-                border: "2px solid #000",
-                backgroundColor: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-              }}
-              aria-label="Headphones"
-            >
-              <Headphones size={16} />
-            </button>
-          </div>
-        )}
+      <div style={{ borderTop: "2px solid #000", padding: "12px 16px", flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
           <div
             style={{

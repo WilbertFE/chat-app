@@ -12,7 +12,7 @@ export default function MessagesPage() {
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar activeRoute="messages" showAudioControls={true} />
+      <DashboardSidebar activeRoute="messages" />
       <DmPanel />
       <FriendsSidebar />
     </div>

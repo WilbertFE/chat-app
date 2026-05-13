@@ -13,7 +13,7 @@ export default function DashboardPage() {
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar activeRoute="servers" showNewServerTopButton={true} />
+      <DashboardSidebar activeRoute="servers" showNewServerButton={true} />
       <ServerStrip />
       <ChatPanel />
       <MembersSidebar />

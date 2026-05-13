@@ -103,3 +103,47 @@ export const friends = {
   totalCount: 24,
   offlineCount: 21,
 };
+
+export const globalMessages = [
+  {
+    id: "1",
+    userId: "3",
+    username: "Marcus T",
+    initials: "MT",
+    isCurrentUser: false,
+    timestamp: "Today at 10:15 AM",
+    text: "Has anyone checked out the new layout update? The hard shadows are taking a minute to get used to, but I'm kind of digging the raw feel.",
+  },
+  {
+    id: "2",
+    userId: "2",
+    username: "Sarah J",
+    initials: "SJ",
+    isCurrentUser: false,
+    timestamp: "Today at 10:45 AM",
+    text: "I completely agree. It feels very intentional. Less 'SaaS dashboard' and more like an old-school control panel mixed with a zine.",
+  },
+  {
+    id: "3",
+    userId: "1",
+    username: "Alex Rivera",
+    initials: "AR",
+    isCurrentUser: true,
+    timestamp: "Today at 11:02 AM",
+    text: "Hey everyone! Just joined the server. Excited to see what Neochat is all about. The UI here is wild.",
+  },
+];
+
+export const globalUsers = {
+  online: [
+    { id: "1", name: "Alex Rivera", initials: "AR", isCurrentUser: true },
+    { id: "2", name: "Sarah J", initials: "SJ", isCurrentUser: false },
+    { id: "3", name: "PixelPunk", initials: "PP", isCurrentUser: false },
+  ],
+  offline: [
+    { id: "4", name: "Marcus T", initials: "MT" },
+    { id: "5", name: "Guest_001", initials: "G0" },
+  ],
+  totalCount: 15,
+  offlineCount: 12,
+};

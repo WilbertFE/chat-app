@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus } from "lucide-react";
+import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus, Globe } from "lucide-react";
 import { signOut } from "next-auth/react";
 import { cn } from "@/lib/utils";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
 
-type ActiveRoute = "messages" | "servers" | "profile" | "help";
+type ActiveRoute = "messages" | "servers" | "global" | "profile" | "help";
 
 interface DashboardSidebarProps {
   activeRoute: ActiveRoute;
@@ -17,6 +17,7 @@ interface DashboardSidebarProps {
 const navItems = [
   { key: "messages" as ActiveRoute, label: "Messages", icon: MessageSquare, href: "/messages" },
   { key: "servers" as ActiveRoute, label: "Servers", icon: Grid3x3, href: "/servers" },
+  { key: "global" as ActiveRoute, label: "Global", icon: Globe, href: "/global" },
   { key: "profile" as ActiveRoute, label: "Profile", icon: User, href: "/profile" },
   { key: "help" as ActiveRoute, label: "Help", icon: HelpCircle, href: "/help" },
 ];

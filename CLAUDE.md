@@ -40,3 +40,35 @@ answering. Make sure to investigate and read relevant files BEFORE
 answering questions about the codebase. Never make any claims about
 code before investigating unless you are certain of the correct
 answer - give grounded and hallucination-free answers.
+
+## Git Commit Policy
+
+Agents must always commit their changes to the GitHub repository after completing a meaningful task or modification.
+
+### Requirements
+
+- Create a git commit after every completed feature, fix, refactor, or documentation update.
+- Write clear and descriptive commit messages following conventional commit style when possible.
+
+Examples:
+
+- `feat: add realtime chat support`
+- `fix: resolve authentication redirect issue`
+- `refactor: simplify websocket connection handler`
+- `docs: update setup instructions`
+
+### Before Committing
+
+Agents should:
+
+1. Ensure the project builds successfully.
+2. Run relevant tests and linting if available.
+3. Avoid committing temporary files, secrets, or debugging artifacts.
+4. Review the diff before committing.
+
+### Git Commands
+
+```bash
+git add .
+git commit -m "feat: describe the change"
+git push

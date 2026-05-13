@@ -3,156 +3,47 @@ import { currentUser } from "@/lib/mock-data";
 
 export default function StatsCards() {
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+    <div className="flex flex-col gap-4">
       {/* Messages Sent */}
-      <div
-        style={{
-          border: "2px solid #000",
-          boxShadow: "4px 4px 0 #000",
-          backgroundColor: "#fff",
-          padding: "20px 24px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "0.7rem",
-            fontWeight: 700,
-            letterSpacing: "0.12em",
-            color: "#555",
-            textTransform: "uppercase",
-            fontFamily: "var(--font-ibm), monospace",
-            marginBottom: "8px",
-          }}
-        >
+      <div className="border-2 border-black shadow-neo bg-white py-5 px-6 relative overflow-hidden">
+        <div className="text-[0.7rem] font-bold tracking-[0.12em] text-neo-muted uppercase font-mono mb-2">
           MESSAGES SENT
         </div>
-        <div
-          style={{
-            fontFamily: "var(--font-syne), sans-serif",
-            fontWeight: 800,
-            fontSize: "3rem",
-            color: "#0d0d0d",
-            lineHeight: 1,
-          }}
-        >
+        <div className="font-syne text-[3rem] text-neo-text leading-none">
           {currentUser.stats.messagesSent}
         </div>
-        {/* Decorative icon */}
         <MessageSquare
           size={64}
-          style={{
-            position: "absolute",
-            right: "16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#e0e0e0",
-            opacity: 0.5,
-          }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-[#e0e0e0] opacity-50"
         />
       </div>
 
       {/* Servers Joined */}
-      <div
-        style={{
-          border: "2px solid #000",
-          boxShadow: "4px 4px 0 #000",
-          backgroundColor: "#ffde00",
-          padding: "20px 24px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "0.7rem",
-            fontWeight: 700,
-            letterSpacing: "0.12em",
-            color: "#555",
-            textTransform: "uppercase",
-            fontFamily: "var(--font-ibm), monospace",
-            marginBottom: "8px",
-          }}
-        >
+      <div className="border-2 border-black shadow-neo bg-neo-yellow py-5 px-6 relative overflow-hidden">
+        <div className="text-[0.7rem] font-bold tracking-[0.12em] text-neo-muted uppercase font-mono mb-2">
           SERVERS JOINED
         </div>
-        <div
-          style={{
-            fontFamily: "var(--font-syne), sans-serif",
-            fontWeight: 800,
-            fontSize: "3rem",
-            color: "#0d0d0d",
-            lineHeight: 1,
-          }}
-        >
+        <div className="font-syne text-[3rem] text-neo-text leading-none">
           {currentUser.stats.serversJoined}
         </div>
         <Users
           size={64}
-          style={{
-            position: "absolute",
-            right: "16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "#0d0d0d",
-            opacity: 0.15,
-          }}
+          className="absolute right-4 top-1/2 -translate-y-1/2 text-neo-text opacity-[0.15]"
         />
       </div>
 
       {/* Member Since */}
-      <div
-        style={{
-          border: "2px solid #000",
-          boxShadow: "4px 4px 0 #000",
-          backgroundColor: "#fff",
-          padding: "20px 24px",
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
+      <div className="border-2 border-black shadow-neo bg-white py-5 px-6 flex items-center gap-4">
         <div>
-          <div
-            style={{
-              fontSize: "0.7rem",
-              fontWeight: 700,
-              letterSpacing: "0.12em",
-              color: "#555",
-              textTransform: "uppercase",
-              fontFamily: "var(--font-ibm), monospace",
-              marginBottom: "8px",
-            }}
-          >
+          <div className="text-[0.7rem] font-bold tracking-[0.12em] text-neo-muted uppercase font-mono mb-2">
             MEMBER SINCE
           </div>
-          <div
-            style={{
-              fontFamily: "var(--font-syne), sans-serif",
-              fontWeight: 800,
-              fontSize: "1.8rem",
-              color: "#0d0d0d",
-              lineHeight: 1,
-            }}
-          >
+          <div className="font-syne text-[1.8rem] text-neo-text leading-none">
             {currentUser.stats.memberSince}
           </div>
         </div>
         {/* Orange calendar icon box */}
-        <div
-          style={{
-            marginLeft: "auto",
-            width: "52px",
-            height: "52px",
-            border: "2px solid #000",
-            backgroundColor: "#ff5c00",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-          }}
-        >
+        <div className="ml-auto w-[52px] h-[52px] border-2 border-black bg-neo-orange flex items-center justify-center shrink-0">
           <Calendar size={24} color="#fff" />
         </div>
       </div>

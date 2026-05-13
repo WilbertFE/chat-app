@@ -3,99 +3,37 @@
 import Link from "next/link";
 import { signIn } from "next-auth/react";
 import { LogIn } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function SignInPage() {
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#ffde00",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "var(--font-ibm), monospace",
-      }}
-    >
-      <div
-        style={{
-          backgroundColor: "#fff",
-          border: "3px solid #000",
-          boxShadow: "8px 8px 0 #000",
-          width: "420px",
-          padding: "48px 40px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "20px",
-        }}
-      >
+    <div className="min-h-screen bg-neo-yellow flex items-center justify-center font-mono">
+      <div className="bg-white border-[3px] border-black shadow-neo-xl w-[420px] py-12 px-10 flex flex-col items-center gap-5">
         {/* App name */}
-        <span
-          style={{
-            fontFamily: "var(--font-ibm), monospace",
-            fontWeight: 700,
-            fontSize: "0.8rem",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase",
-            color: "#0d0d0d",
-          }}
-        >
+        <span className="font-mono font-bold text-[0.8rem] tracking-[0.15em] uppercase text-neo-text">
           NEOCHAT
         </span>
 
         {/* Heading */}
-        <h1
-          style={{
-            fontFamily: "var(--font-syne), sans-serif",
-            fontWeight: 800,
-            fontSize: "2rem",
-            margin: 0,
-            textAlign: "center",
-            color: "#0d0d0d",
-          }}
-        >
+        <h1 className="font-syne text-[2rem] m-0 text-center text-neo-text">
           Welcome back.
         </h1>
 
-        <div style={{ width: "100%", borderTop: "1px solid #eee" }} />
+        <div className="w-full border-t border-[#eee]" />
 
         {/* Google button */}
-        <button
+        <Button
           onClick={() => signIn("google", { callbackUrl: "/messages" })}
-          style={{
-            width: "100%",
-            backgroundColor: "#fff",
-            border: "2px solid #000",
-            boxShadow: "4px 4px 0 #000",
-            padding: "14px 20px",
-            fontFamily: "var(--font-ibm), monospace",
-            fontWeight: 700,
-            fontSize: "0.9rem",
-            color: "#0d0d0d",
-            cursor: "pointer",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            letterSpacing: "0.02em",
-          }}
-          className="neo-btn-hover"
+          className="w-full bg-white hover:bg-white border-2 border-black shadow-neo py-[14px] px-5 font-mono font-bold text-[0.9rem] text-neo-text tracking-[0.02em] neo-btn-hover rounded-none h-auto gap-[10px]"
         >
           <LogIn size={18} />
           Continue with Google
-        </button>
+        </Button>
 
         {/* Sign up link */}
-        <p style={{ fontSize: "0.85rem", color: "#555", margin: 0, textAlign: "center" }}>
+        <p className="text-[0.85rem] text-neo-muted m-0 text-center">
           Don&apos;t have an account?{" "}
-          <Link
-            href="/signup"
-            style={{
-              color: "#ff5c00",
-              fontWeight: 700,
-              textDecoration: "underline",
-            }}
-          >
+          <Link href="/signup" className="text-neo-orange font-bold underline">
             Sign Up
           </Link>
         </p>

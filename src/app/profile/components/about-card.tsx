@@ -3,61 +3,30 @@ import { currentUser } from "@/lib/mock-data";
 
 export default function AboutCard() {
   return (
-    <div
-      style={{
-        border: "2px solid #000",
-        boxShadow: "4px 4px 0 #000",
-        backgroundColor: "#fff",
-        padding: "24px",
-        fontFamily: "var(--font-ibm), monospace",
-      }}
-    >
+    <div className="border-2 border-black shadow-neo bg-white p-6 font-mono">
       {/* Heading */}
-      <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "12px" }}>
+      <div className="flex items-center gap-[10px] mb-3">
         <User size={18} />
-        <h2
-          style={{
-            fontFamily: "var(--font-syne), sans-serif",
-            fontWeight: 800,
-            fontSize: "1.1rem",
-            margin: 0,
-            letterSpacing: "0.05em",
-          }}
-        >
+        <h2 className="font-syne text-[1.1rem] m-0 tracking-[0.05em]">
           ABOUT ME
         </h2>
       </div>
 
-      <div style={{ borderTop: "2px dashed #ccc", marginBottom: "16px" }} />
+      <div className="border-t-2 border-dashed border-[#ccc] mb-4" />
 
       {/* Bio */}
-      <p
-        style={{
-          fontSize: "0.875rem",
-          color: "#0d0d0d",
-          lineHeight: 1.7,
-          margin: "0 0 16px",
-          whiteSpace: "pre-line",
-        }}
-      >
+      <p className="text-[0.875rem] text-neo-text leading-[1.7] m-0 mb-4 whitespace-pre-line">
         {currentUser.bio}
       </p>
 
-      <div style={{ borderTop: "2px dashed #ccc", marginBottom: "16px" }} />
+      <div className="border-t-2 border-dashed border-[#ccc] mb-4" />
 
       {/* Interest tags */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
+      <div className="flex flex-wrap gap-2">
         {currentUser.interests.map((tag) => (
           <span
             key={tag}
-            style={{
-              border: "2px solid #000",
-              padding: "4px 12px",
-              fontSize: "0.75rem",
-              fontWeight: 500,
-              color: "#0d0d0d",
-              backgroundColor: "#fffdf5",
-            }}
+            className="border-2 border-black py-1 px-3 text-[0.75rem] font-medium text-neo-text bg-neo-bg"
           >
             {tag}
           </span>

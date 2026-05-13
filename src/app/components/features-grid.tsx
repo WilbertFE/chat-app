@@ -2,261 +2,80 @@ import { MessageSquare, Grid3x3, Zap, Volume2 } from "lucide-react";
 
 export default function FeaturesGrid() {
   return (
-    <section style={{ borderBottom: "2px solid #000" }}>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1fr",
-          gridTemplateRows: "auto auto",
-        }}
-      >
-        {/* Card 1 — THREADED CHAOS (blue, spans tall) */}
-        <div
-          style={{
-            backgroundColor: "#4fc3f7",
-            border: "2px solid #000",
-            borderTop: "none",
-            borderLeft: "none",
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-            gridRow: "1 / 2",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <div
-              style={{
-                width: "44px",
-                height: "44px",
-                border: "2px solid #000",
-                backgroundColor: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
+    <section className="border-b-2 border-b-black">
+      <div className="grid grid-cols-2">
+        {/* Card 1 — THREADED CHAOS (blue) */}
+        <div className="bg-neo-blue border-r-2 border-b-2 border-black p-10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 border-2 border-black bg-white flex items-center justify-center shrink-0">
               <MessageSquare size={22} />
             </div>
-            <h3
-              style={{
-                fontFamily: "var(--font-syne), sans-serif",
-                fontWeight: 800,
-                fontSize: "1.4rem",
-                margin: 0,
-                letterSpacing: "0.02em",
-              }}
-            >
+            <h3 className="font-syne text-[1.4rem] m-0 tracking-[0.02em]">
               THREADED CHAOS
             </h3>
           </div>
-          <p
-            style={{
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.875rem",
-              color: "#0d0d0d",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
+          <p className="font-mono text-[0.875rem] text-neo-text leading-[1.6] m-0">
             Keep conversations bounded by thick strokes. Hierarchy established through hard-edged structure, not subtle blur.
           </p>
           {/* Decorative box */}
-          <div
-            style={{
-              marginTop: "auto",
-              border: "2px solid #000",
-              backgroundColor: "#fff",
-              padding: "12px",
-              display: "flex",
-              gap: "8px",
-              alignItems: "center",
-            }}
-          >
-            <div style={{ width: "8px", height: "36px", backgroundColor: "#000" }} />
-            <div style={{ flex: 1, height: "8px", backgroundColor: "#000", opacity: 0.2 }} />
-            <div style={{ width: "36px", height: "36px", border: "2px solid #000", backgroundColor: "#ffde00" }} />
+          <div className="mt-auto border-2 border-black bg-white p-3 flex gap-2 items-center">
+            <div className="w-2 h-9 bg-black" />
+            <div className="flex-1 h-2 bg-black opacity-20" />
+            <div className="w-9 h-9 border-2 border-black bg-neo-yellow" />
           </div>
         </div>
 
         {/* Card 2 — SERVER HUBS (pink) */}
-        <div
-          style={{
-            backgroundColor: "#ffd6cc",
-            border: "2px solid #000",
-            borderTop: "none",
-            borderLeft: "none",
-            borderRight: "none",
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <div
-              style={{
-                width: "44px",
-                height: "44px",
-                border: "2px solid #000",
-                backgroundColor: "#fff",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
+        <div className="bg-neo-pink border-b-2 border-black p-10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 border-2 border-black bg-white flex items-center justify-center shrink-0">
               <Grid3x3 size={22} />
             </div>
-            <h3
-              style={{
-                fontFamily: "var(--font-syne), sans-serif",
-                fontWeight: 800,
-                fontSize: "1.4rem",
-                margin: 0,
-              }}
-            >
+            <h3 className="font-syne text-[1.4rem] m-0">
               SERVER HUBS
             </h3>
           </div>
-          <p
-            style={{
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.875rem",
-              color: "#0d0d0d",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
+          <p className="font-mono text-[0.875rem] text-neo-text leading-[1.6] m-0">
             Fixed-pixel sidebars that feel like heavy cards resting on the background. No floaty sidebars.
           </p>
         </div>
 
         {/* Card 3 — INSTANT SYNC (off-white) */}
-        <div
-          style={{
-            backgroundColor: "#fffdf5",
-            border: "2px solid #000",
-            borderTop: "none",
-            borderLeft: "none",
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <div
-              style={{
-                width: "44px",
-                height: "44px",
-                border: "2px solid #000",
-                backgroundColor: "#ffde00",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
+        <div className="bg-neo-bg border-r-2 border-b-2 border-black p-10 flex flex-col gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 border-2 border-black bg-neo-yellow flex items-center justify-center shrink-0">
               <Zap size={22} />
             </div>
-            <h3
-              style={{
-                fontFamily: "var(--font-syne), sans-serif",
-                fontWeight: 800,
-                fontSize: "1.4rem",
-                margin: 0,
-              }}
-            >
+            <h3 className="font-syne text-[1.4rem] m-0">
               INSTANT SYNC
             </h3>
           </div>
-          <p
-            style={{
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.875rem",
-              color: "#0d0d0d",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
+          <p className="font-mono text-[0.875rem] text-neo-text leading-[1.6] m-0">
             No 2-axis lighting simulations. Just immediate, 2D mechanical state updates across all clients.
           </p>
         </div>
 
-        {/* Card 4 — MECHANICAL AUDIO (white, large) */}
-        <div
-          style={{
-            backgroundColor: "#fff",
-            border: "2px solid #000",
-            borderTop: "none",
-            borderLeft: "none",
-            borderRight: "none",
-            padding: "40px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "16px",
-            position: "relative",
-          }}
-        >
+        {/* Card 4 — MECHANICAL AUDIO (white) */}
+        <div className="bg-white border-b-2 border-black p-10 flex flex-col gap-4 relative">
           {/* NEW FEATURE badge */}
-          <div style={{ display: "flex", alignItems: "center", gap: "12px", flexWrap: "wrap" }}>
-            <span
-              style={{
-                backgroundColor: "#ff5c00",
-                border: "2px solid #000",
-                borderRadius: "999px",
-                padding: "3px 12px",
-                fontSize: "0.65rem",
-                fontWeight: 700,
-                color: "#fff",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-              }}
-            >
+          <div className="flex items-center gap-3 flex-wrap">
+            <span className="bg-neo-orange border-2 border-black rounded-full py-[3px] px-3 text-[0.65rem] font-bold text-white tracking-[0.08em] uppercase">
               NEW FEATURE
             </span>
           </div>
-          <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-            <div
-              style={{
-                width: "44px",
-                height: "44px",
-                border: "2px solid #000",
-                backgroundColor: "#0d0d0d",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexShrink: 0,
-              }}
-            >
+          <div className="flex items-center gap-3">
+            <div className="w-11 h-11 border-2 border-black bg-neo-text flex items-center justify-center shrink-0">
               <Volume2 size={22} color="#fff" />
             </div>
-            <h3
-              style={{
-                fontFamily: "var(--font-syne), sans-serif",
-                fontWeight: 800,
-                fontSize: "1.4rem",
-                margin: 0,
-              }}
-            >
+            <h3 className="font-syne text-[1.4rem] m-0">
               MECHANICAL AUDIO
             </h3>
           </div>
-          <p
-            style={{
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.875rem",
-              color: "#0d0d0d",
-              lineHeight: 1.6,
-              margin: 0,
-            }}
-          >
-            Voice channels that don't try to hide the tech. Raw bitrates, clear indications, hard-edged volume meters.
+          <p className="font-mono text-[0.875rem] text-neo-text leading-[1.6] m-0">
+            Voice channels that don&apos;t try to hide the tech. Raw bitrates, clear indications, hard-edged volume meters.
           </p>
           {/* Bar chart SVG */}
-          <div style={{ marginTop: "auto" }}>
+          <div className="mt-auto">
             <svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
               {[8, 20, 36, 24, 40, 16, 44, 28, 12, 32].map((h, i) => (
                 <rect

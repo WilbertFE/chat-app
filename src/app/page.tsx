@@ -6,7 +6,7 @@ import Footer from "@/components/footer";
 
 export default function LandingPage() {
   return (
-    <div style={{ backgroundColor: "#fffdf5", minHeight: "100vh" }}>
+    <div className="bg-neo-bg min-h-screen">
       <Navbar />
       <main>
         <HeroSection />

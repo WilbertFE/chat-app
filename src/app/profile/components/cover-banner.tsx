@@ -1,17 +1,9 @@
 import { Pencil } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export default function CoverBanner() {
   return (
-    <div
-      style={{
-        height: "240px",
-        position: "relative",
-        border: "2px solid #000",
-        borderLeft: "none",
-        overflow: "hidden",
-        backgroundColor: "#1a1a2e",
-      }}
-    >
+    <div className="h-[240px] relative border-t-2 border-r-2 border-b-2 border-black overflow-hidden bg-[#1a1a2e]">
       {/* Geometric SVG pattern */}
       <svg
         width="100%"
@@ -19,7 +11,7 @@ export default function CoverBanner() {
         viewBox="0 0 800 200"
         preserveAspectRatio="xMidYMid slice"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ position: "absolute", inset: 0 }}
+        className="absolute inset-0"
       >
         {/* Background */}
         <rect width="800" height="200" fill="#1a1a2e" />
@@ -56,27 +48,12 @@ export default function CoverBanner() {
       </svg>
 
       {/* Pencil edit button */}
-      <button
-        style={{
-          position: "absolute",
-          top: "12px",
-          right: "12px",
-          width: "32px",
-          height: "32px",
-          border: "2px solid #000",
-          backgroundColor: "#fff",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          cursor: "pointer",
-          boxShadow: "2px 2px 0 #000",
-          zIndex: 10,
-        }}
+      <Button
         aria-label="Edit cover"
-        className="neo-btn-hover"
+        className="absolute top-3 right-3 w-8 h-8 border-2 border-black bg-white hover:bg-white shadow-neo-xs z-10 neo-btn-hover rounded-none p-0"
       >
         <Pencil size={14} />
-      </button>
+      </Button>
     </div>
   );
 }

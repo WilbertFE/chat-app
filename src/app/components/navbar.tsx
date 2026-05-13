@@ -4,53 +4,19 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav
-      style={{
-        position: "fixed",
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 50,
-        backgroundColor: "#fff",
-        borderBottom: "2px solid #000",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 32px",
-        height: "60px",
-        fontFamily: "var(--font-ibm), monospace",
-      }}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b-2 border-b-black flex items-center justify-between px-8 h-[60px] font-mono">
       {/* Logo */}
-      <Link
-        href="/"
-        style={{
-          fontFamily: "var(--font-syne), sans-serif",
-          fontWeight: 800,
-          fontSize: "1.4rem",
-          color: "#0d0d0d",
-          textDecoration: "none",
-          letterSpacing: "0.02em",
-        }}
-      >
+      <Link href="/" className="font-syne text-[1.4rem] text-neo-text no-underline tracking-[0.02em]">
         NEOCHAT
       </Link>
 
       {/* Center links */}
-      <div style={{ display: "flex", gap: "32px", alignItems: "center" }}>
+      <div className="flex gap-8 items-center">
         {["FEATURES", "PRICING", "ABOUT"].map((item) => (
           <a
             key={item}
             href="#"
-            style={{
-              fontSize: "0.8rem",
-              fontWeight: 500,
-              letterSpacing: "0.1em",
-              color: "#0d0d0d",
-              textDecoration: "none",
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.textDecoration = "underline")}
-            onMouseLeave={(e) => (e.currentTarget.style.textDecoration = "none")}
+            className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline"
           >
             {item}
           </a>
@@ -58,42 +24,16 @@ export default function Navbar() {
       </div>
 
       {/* Auth buttons */}
-      <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+      <div className="flex gap-[10px] items-center">
         <Link
           href="/signin"
-          style={{
-            padding: "8px 18px",
-            border: "2px solid #000",
-            backgroundColor: "#fff",
-            boxShadow: "3px 3px 0 #000",
-            fontFamily: "var(--font-ibm), monospace",
-            fontWeight: 700,
-            fontSize: "0.8rem",
-            color: "#0d0d0d",
-            textDecoration: "none",
-            display: "inline-block",
-            transition: "transform 0.1s, box-shadow 0.1s",
-          }}
-          className="neo-btn-hover"
+          className="py-2 px-[18px] border-2 border-black bg-white shadow-neo-sm font-mono font-bold text-[0.8rem] text-neo-text no-underline inline-block neo-btn-hover"
         >
           Sign In
         </Link>
         <Link
           href="/signup"
-          style={{
-            padding: "8px 18px",
-            border: "2px solid #000",
-            backgroundColor: "#ff5c00",
-            boxShadow: "3px 3px 0 #000",
-            fontFamily: "var(--font-ibm), monospace",
-            fontWeight: 700,
-            fontSize: "0.8rem",
-            color: "#fff",
-            textDecoration: "none",
-            display: "inline-block",
-            textTransform: "uppercase",
-          }}
-          className="neo-btn-hover"
+          className="py-2 px-[18px] border-2 border-black bg-neo-orange shadow-neo-sm font-mono font-bold text-[0.8rem] text-white no-underline inline-block uppercase neo-btn-hover"
         >
           Sign Up
         </Link>

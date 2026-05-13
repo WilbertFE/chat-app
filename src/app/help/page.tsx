@@ -38,89 +38,33 @@ const faqs = [
 
 export default function HelpPage() {
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        overflow: "hidden",
-        backgroundColor: "#fffdf5",
-      }}
-    >
+    <div className="flex h-screen overflow-hidden bg-neo-bg">
       <DashboardSidebar activeRoute="help" />
 
       {/* Main content */}
-      <div
-        style={{
-          flex: 1,
-          overflowY: "auto",
-          fontFamily: "var(--font-ibm), monospace",
-        }}
-      >
+      <div className="flex-1 overflow-y-auto font-mono">
         {/* Header */}
-        <div
-          style={{
-            padding: "40px 48px 32px",
-            borderBottom: "2px solid #000",
-            backgroundColor: "#ffde00",
-          }}
-        >
-          <h1
-            style={{
-              fontFamily: "var(--font-syne), sans-serif",
-              fontWeight: 800,
-              fontSize: "2.5rem",
-              margin: "0 0 8px",
-              color: "#0d0d0d",
-              textTransform: "uppercase",
-            }}
-          >
+        <div className="px-12 pt-10 pb-8 border-b-2 border-b-black bg-neo-yellow">
+          <h1 className="font-syne text-[2.5rem] m-0 mb-2 text-neo-text uppercase">
             Help & FAQ
           </h1>
-          <p style={{ margin: 0, fontSize: "0.9rem", color: "#555" }}>
+          <p className="m-0 text-[0.9rem] text-neo-muted">
             Answers to the most common questions about NEOCHAT.
           </p>
         </div>
 
         {/* FAQ list */}
-        <div style={{ padding: "32px 48px", maxWidth: "820px" }}>
+        <div className="p-8 px-12 max-w-[820px]">
           {faqs.map((item, i) => (
             <details
               key={i}
-              style={{
-                border: "2px solid #000",
-                boxShadow: "4px 4px 0 #000",
-                backgroundColor: "#fff",
-                marginBottom: "16px",
-                cursor: "pointer",
-              }}
+              className="border-2 border-black shadow-neo bg-white mb-4 cursor-pointer"
             >
-              <summary
-                style={{
-                  padding: "16px 20px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: "12px",
-                  fontWeight: 700,
-                  fontSize: "0.95rem",
-                  color: "#0d0d0d",
-                  listStyle: "none",
-                  userSelect: "none",
-                }}
-              >
+              <summary className="p-4 px-5 flex items-center justify-between gap-3 font-bold text-[0.95rem] text-neo-text list-none select-none">
                 <span>{item.q}</span>
-                <ChevronDown size={18} style={{ flexShrink: 0, color: "#555" }} />
+                <ChevronDown size={18} className="shrink-0 text-neo-muted" />
               </summary>
-              <div
-                style={{
-                  padding: "14px 20px 18px",
-                  borderTop: "2px solid #000",
-                  fontSize: "0.875rem",
-                  color: "#333",
-                  lineHeight: 1.7,
-                  backgroundColor: "#fffdf5",
-                }}
-              >
+              <div className="py-[14px] px-5 pb-[18px] border-t-2 border-t-black text-[0.875rem] text-[#333] leading-[1.7] bg-neo-bg">
                 {item.a}
               </div>
             </details>
@@ -128,46 +72,16 @@ export default function HelpPage() {
         </div>
 
         {/* Contact card */}
-        <div
-          style={{
-            margin: "0 48px 48px",
-            border: "2px solid #000",
-            boxShadow: "4px 4px 0 #000",
-            backgroundColor: "#ff5c00",
-            padding: "24px 28px",
-            maxWidth: "820px",
-          }}
-        >
-          <div
-            style={{
-              fontFamily: "var(--font-syne), sans-serif",
-              fontWeight: 800,
-              fontSize: "1.1rem",
-              color: "#fff",
-              marginBottom: "6px",
-            }}
-          >
+        <div className="mx-12 mb-12 border-2 border-black shadow-neo bg-neo-orange py-6 px-7 max-w-[820px]">
+          <div className="font-syne text-[1.1rem] text-white mb-[6px]">
             STILL NEED HELP?
           </div>
-          <p style={{ margin: "0 0 16px", fontSize: "0.875rem", color: "rgba(255,255,255,0.85)" }}>
+          <p className="m-0 mb-4 text-[0.875rem] text-white/85">
             Can&apos;t find what you&apos;re looking for? Reach us directly.
           </p>
           <a
             href="mailto:support@neochat.app"
-            style={{
-              display: "inline-block",
-              padding: "10px 20px",
-              backgroundColor: "#fff",
-              border: "2px solid #000",
-              boxShadow: "3px 3px 0 #000",
-              fontFamily: "var(--font-ibm), monospace",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              color: "#0d0d0d",
-              textDecoration: "none",
-              textTransform: "uppercase",
-              letterSpacing: "0.05em",
-            }}
+            className="inline-block py-[10px] px-5 bg-white border-2 border-black shadow-neo-sm font-mono font-bold text-[0.8rem] text-neo-text no-underline uppercase tracking-[0.05em] neo-btn-hover"
           >
             Contact Support
           </a>

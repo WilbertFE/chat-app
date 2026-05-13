@@ -1,7 +1,11 @@
+"use client";
+
 import { MessageSquare, Users, Calendar } from "lucide-react";
-import { currentUser } from "@/lib/mock-data";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export default function StatsCards() {
+  const currentUser = useCurrentUser();
+
   return (
     <div className="flex flex-col gap-4">
       {/* Messages Sent */}

@@ -2,7 +2,8 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Bell, PlusCircle, Smile, Send } from "lucide-react";
-import { dmMessages as initialDmMessages, currentUser } from "@/lib/mock-data";
+import { dmMessages as initialDmMessages } from "@/lib/mock-data";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,7 @@ type DmMessage = {
 };
 
 export default function DmPanel() {
+  const currentUser = useCurrentUser();
   const [messages, setMessages] = useState<DmMessage[]>(initialDmMessages);
   const [input, setInput] = useState("");
   const bottomRef = useRef<HTMLDivElement>(null);

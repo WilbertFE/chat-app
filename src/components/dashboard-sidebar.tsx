@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus } from "lucide-react";
 import { signOut } from "next-auth/react";
-import { currentUser } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
+import { useCurrentUser } from "@/hooks/use-current-user";
 import { Button } from "@/components/ui/button";
 
 type ActiveRoute = "messages" | "servers" | "profile" | "help";
@@ -25,6 +25,8 @@ export default function DashboardSidebar({
   activeRoute,
   showNewServerButton = false,
 }: DashboardSidebarProps) {
+  const currentUser = useCurrentUser();
+
   return (
     <div className="w-[260px] min-w-[260px] bg-neo-sidebar border-r-2 border-r-black flex flex-col font-mono h-full">
       {/* Header */}

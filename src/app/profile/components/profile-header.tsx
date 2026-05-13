@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import { Pencil } from "lucide-react";
-import { currentUser } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export default function ProfileHeader() {
+  const currentUser = useCurrentUser();
   const [editing, setEditing] = useState(false);
 
   return (

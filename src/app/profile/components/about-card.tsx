@@ -1,7 +1,11 @@
+"use client";
+
 import { User } from "lucide-react";
-import { currentUser } from "@/lib/mock-data";
+import { useCurrentUser } from "@/hooks/use-current-user";
 
 export default function AboutCard() {
+  const currentUser = useCurrentUser();
+
   return (
     <div className="border-2 border-black shadow-neo bg-white p-6 font-mono">
       {/* Heading */}

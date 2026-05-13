@@ -1,7 +1,7 @@
+import DashboardSidebar from "@/components/dashboard-sidebar";
 import ServerStrip from "./components/server-strip";
 import ChatPanel from "./components/chat-panel";
 import MembersSidebar from "./components/members-sidebar";
-import DashboardSidebar from "@/components/dashboard-sidebar";
 
 export default function DashboardPage() {
   return (
@@ -13,8 +13,8 @@ export default function DashboardPage() {
         backgroundColor: "#fffdf5",
       }}
     >
+      <DashboardSidebar activeRoute="servers" showNewServerTopButton={true} />
       <ServerStrip />
-      <DashboardSidebar activeRoute="servers" newServerButtonStyle="blue" />
       <ChatPanel />
       <MembersSidebar />
     </div>

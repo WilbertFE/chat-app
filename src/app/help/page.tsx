@@ -46,7 +46,7 @@ export default function HelpPage() {
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar activeRoute="help" newServerButtonStyle="blue" />
+      <DashboardSidebar activeRoute="help" />
 
       {/* Main content */}
       <div
@@ -113,13 +113,12 @@ export default function HelpPage() {
               </summary>
               <div
                 style={{
-                  padding: "0 20px 18px",
+                  padding: "14px 20px 18px",
                   borderTop: "2px solid #000",
                   fontSize: "0.875rem",
                   color: "#333",
                   lineHeight: 1.7,
                   backgroundColor: "#fffdf5",
-                  paddingTop: "14px",
                 }}
               >
                 {item.a}
@@ -128,7 +127,7 @@ export default function HelpPage() {
           ))}
         </div>
 
-        {/* Contact footer */}
+        {/* Contact card */}
         <div
           style={{
             margin: "0 48px 48px",

@@ -15,7 +15,7 @@ export default function ProfilePage() {
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar activeRoute="profile" newServerButtonStyle="blue" />
+      <DashboardSidebar activeRoute="profile" />
 
       {/* Main content */}
       <div
@@ -24,7 +24,6 @@ export default function ProfilePage() {
           display: "flex",
           flexDirection: "column",
           overflowY: "auto",
-          borderLeft: "none",
         }}
       >
         <CoverBanner />

@@ -10,7 +10,6 @@ interface DashboardSidebarProps {
   activeRoute: ActiveRoute;
   showNewServerTopButton?: boolean;
   showAudioControls?: boolean;
-  newServerButtonStyle?: "blue" | "orange";
 }
 
 const navItems = [
@@ -24,7 +23,6 @@ export default function DashboardSidebar({
   activeRoute,
   showNewServerTopButton = false,
   showAudioControls = false,
-  newServerButtonStyle = "orange",
 }: DashboardSidebarProps) {
   return (
     <div
@@ -74,7 +72,7 @@ export default function DashboardSidebar({
         </span>
       </div>
 
-      {/* New Server top button (Messages view) */}
+      {/* New Server top button */}
       {showNewServerTopButton && (
         <div style={{ padding: "12px 16px", borderBottom: "2px solid #000" }}>
           <button
@@ -256,54 +254,11 @@ export default function DashboardSidebar({
             fontSize: "0.8rem",
             color: "#555",
             textDecoration: "none",
-            marginBottom: newServerButtonStyle === "blue" ? "10px" : 0,
           }}
         >
           <LogOut size={14} />
           Logout
         </Link>
-        {newServerButtonStyle === "blue" && (
-          <button
-            style={{
-              width: "100%",
-              backgroundColor: "#4fc3f7",
-              border: "2px solid #000",
-              boxShadow: "3px 3px 0 #000",
-              color: "#000",
-              fontFamily: "var(--font-ibm), monospace",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              padding: "8px 12px",
-              cursor: "pointer",
-              letterSpacing: "0.05em",
-              marginTop: "8px",
-            }}
-            className="neo-btn-hover"
-          >
-            New Server
-          </button>
-        )}
-        {!showNewServerTopButton && newServerButtonStyle !== "blue" && (
-          <button
-            style={{
-              width: "100%",
-              backgroundColor: "#4fc3f7",
-              border: "2px solid #000",
-              boxShadow: "3px 3px 0 #000",
-              color: "#000",
-              fontFamily: "var(--font-ibm), monospace",
-              fontWeight: 700,
-              fontSize: "0.8rem",
-              padding: "8px 12px",
-              cursor: "pointer",
-              letterSpacing: "0.05em",
-              marginTop: "8px",
-            }}
-            className="neo-btn-hover"
-          >
-            New Server
-          </button>
-        )}
       </div>
     </div>
   );

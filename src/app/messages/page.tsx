@@ -12,12 +12,7 @@ export default function MessagesPage() {
         backgroundColor: "#fffdf5",
       }}
     >
-      <DashboardSidebar
-        activeRoute="messages"
-        showNewServerTopButton={true}
-        showAudioControls={true}
-        newServerButtonStyle="orange"
-      />
+      <DashboardSidebar activeRoute="messages" showAudioControls={true} />
       <DmPanel />
       <FriendsSidebar />
     </div>

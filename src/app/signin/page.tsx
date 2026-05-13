@@ -14,6 +14,7 @@ export default function SignInPage() {
           NEOCHAT
         </span>
 
+
         {/* Heading */}
         <h1 className="font-syne text-[2rem] m-0 text-center text-neo-text">
           Welcome back.
@@ -31,6 +32,7 @@ export default function SignInPage() {
         </Button>
 
         {/* Sign up link */}
+        
         <p className="text-[0.85rem] text-neo-muted m-0 text-center">
           Don&apos;t have an account?{" "}
           <Link href="/signup" className="text-neo-orange font-bold underline">

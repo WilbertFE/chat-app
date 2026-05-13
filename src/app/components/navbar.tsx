@@ -24,13 +24,7 @@ export default function Navbar() {
             ))}
           </>
         ) : (
-          <>
-            {["FEATURES", "PRICING", "ABOUT"].map((item) => (
-              <a key={item} href="#" className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline">
-                {item}
-              </a>
-            ))}
-          </>
+         <></>
         )}
       </div>
 

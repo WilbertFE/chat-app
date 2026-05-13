@@ -27,7 +27,7 @@ export default function Navbar() {
       </div>
 
       {/* Auth buttons */}
-      {status !== "authenticated" && (
+      {status === "unauthenticated" && (
         <div className="flex gap-[10px] items-center">
           <Link
             href="/signin"

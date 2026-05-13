@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\" -Recurse -Force)",
+      "Bash(Select-Object FullName)",
+      "PowerShell(grep *)",
+      "PowerShell(Get-Item *)",
+      "PowerShell(ls *)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\('dependencies',{}\\).get\\('next','not found'\\)\\)\")",
+      "Read(//e/02\\) Work/\\(02\\) Coding/\\(01\\) NextJS/chat-app/node_modules/next/dist/**)",
+      "Bash(dir \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\node_modules\\\\next\\\\dist\\\\docs\\\\\" 2>/dev/null || echo \"no docs\")",
+      "Bash(npm install *)",
+      "Bash(del \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\\\\auth\\\\callback\\\\route.ts\")",
+      "Bash(del \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\lib\\\\supabase\\\\client.ts\")",
+      "Bash(del \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\lib\\\\supabase\\\\server.ts\")",
+      "Bash(rm \"E:/02\\) Work/\\(02\\) Coding/\\(01\\) NextJS/chat-app/src/app/auth/callback/route.ts\")",
+      "Bash(rm \"E:/02\\) Work/\\(02\\) Coding/\\(01\\) NextJS/chat-app/src/lib/supabase/client.ts\")",
+      "Bash(rm \"E:/02\\) Work/\\(02\\) Coding/\\(01\\) NextJS/chat-app/src/lib/supabase/server.ts\")",
+      "PowerShell(Remove-Item *)",
+      "Bash(npm run *)",
+      "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\" -Recurse -Filter \"*.tsx\")",
+      "PowerShell(Rename-Item *)",
+      "PowerShell(Copy-Item *)"
+    ]
+  }
+}

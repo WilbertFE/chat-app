@@ -17,7 +17,7 @@ export default function Navbar() {
       <div className="flex gap-8 items-center">
         {status === "authenticated" ? (
           <>
-            {[{ label: "DASHBOARD", href: "/dashboard" }, { label: "MESSAGES", href: "/messages" }, { label: "PROFILE", href: "/profile" }].map(({ label, href }) => (
+            {[{ label: "SERVERS", href: "/servers" }, { label: "MESSAGES", href: "/messages" }, { label: "PROFILE", href: "/profile" }].map(({ label, href }) => (
               <Link key={label} href={href} className="text-[0.8rem] font-medium tracking-[0.1em] text-neo-text no-underline hover:underline">
                 {label}
               </Link>

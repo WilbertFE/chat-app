@@ -27,7 +27,7 @@ export default function HeroSection() {
           GET STARTED FREE
         </Link>
         <Link
-          href="/dashboard"
+          href="/servers"
           className="py-[14px] px-8 bg-white border-2 border-black shadow-neo font-mono font-bold text-[0.9rem] text-neo-text no-underline uppercase tracking-[0.08em] inline-block neo-btn-hover"
         >
           VIEW DEMO

@@ -3,6 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 import { Bell, PlusCircle, Smile, Send } from "lucide-react";
 import { dmMessages as initialDmMessages, currentUser } from "@/lib/mock-data";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type DmMessage = {
   id: string;
@@ -44,178 +47,79 @@ export default function DmPanel() {
   };
 
   return (
-    <div
-      style={{
-        flex: 1,
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#fff",
-        borderLeft: "2px solid #000",
-        height: "100%",
-        overflow: "hidden",
-      }}
-    >
+    <div className="flex-1 flex flex-col bg-white border-l-2 border-l-black h-full overflow-hidden">
       {/* Header */}
-      <div
-        style={{
-          padding: "0 20px",
-          height: "60px",
-          borderBottom: "2px solid #000",
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-          flexShrink: 0,
-          backgroundColor: "#fff",
-        }}
-      >
-        <span style={{ fontFamily: "var(--font-syne), sans-serif", fontWeight: 800, fontSize: "1.2rem" }}>
-          # SARAH J
-        </span>
-        <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: "10px" }}>
-          <button
-            style={{
-              width: "32px",
-              height: "32px",
-              border: "none",
-              backgroundColor: "transparent",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-            }}
+      <div className="px-5 h-[60px] border-b-2 border-b-black flex items-center gap-3 shrink-0 bg-white">
+        <span className="font-syne text-[1.2rem]"># SARAH J</span>
+        <div className="ml-auto flex items-center gap-2.5">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-8 h-8 border-none bg-transparent hover:bg-transparent"
             aria-label="Notifications"
           >
             <Bell size={18} color="#555" />
-          </button>
-          <input
+          </Button>
+          <Input
             type="text"
             placeholder="Search..."
-            style={{
-              border: "2px solid #000",
-              padding: "6px 10px",
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.8rem",
-              outline: "none",
-              width: "160px",
-              backgroundColor: "#fffdf5",
-            }}
+            className="border-2 border-black py-1.5 px-2.5 font-mono text-[0.8rem] outline-none w-40 bg-neo-bg rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 h-auto"
           />
         </div>
       </div>
 
       {/* Messages area */}
-      <div
-        style={{
-          flex: 1,
-          overflowY: "auto",
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "16px",
-        }}
-      >
+      <div className="flex-1 overflow-y-auto p-5 flex flex-col gap-4">
         {/* Date divider */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            margin: "8px 0",
-          }}
-        >
-          <div style={{ flex: 1, borderTop: "1px dashed #ccc" }} />
-          <span
-            style={{
-              fontSize: "0.75rem",
-              fontWeight: 700,
-              color: "#555",
-              border: "1px solid #ccc",
-              padding: "2px 10px",
-              fontFamily: "var(--font-ibm), monospace",
-              letterSpacing: "0.08em",
-            }}
-          >
+        <div className="flex items-center gap-3 my-2">
+          <div className="flex-1 border-t border-t-[#ccc] border-dashed" />
+          <span className="text-xs font-bold text-neo-muted border border-[#ccc] py-0.5 px-2.5 font-mono tracking-[0.08em]">
             TODAY
           </span>
-          <div style={{ flex: 1, borderTop: "1px dashed #ccc" }} />
+          <div className="flex-1 border-t border-t-[#ccc] border-dashed" />
         </div>
 
         {/* DM messages */}
         {messages.map((msg) => (
           <div
             key={msg.id}
-            style={{
-              display: "flex",
-              gap: "10px",
-              flexDirection: msg.isCurrentUser ? "row-reverse" : "row",
-              alignItems: "flex-start",
-            }}
+            className={cn(
+              "flex gap-2.5 items-start",
+              msg.isCurrentUser ? "flex-row-reverse" : "flex-row"
+            )}
           >
             <div
-              style={{
-                width: "36px",
-                height: "36px",
-                flexShrink: 0,
-                border: "2px solid #000",
-                backgroundColor: msg.isCurrentUser ? "#ff5c00" : "#e0e0e0",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontWeight: 700,
-                fontSize: "0.65rem",
-                color: msg.isCurrentUser ? "#fff" : "#0d0d0d",
-                fontFamily: "var(--font-ibm), monospace",
-              }}
+              className={`w-9 h-9 shrink-0 border-2 border-black flex items-center justify-center font-bold text-[0.65rem] font-mono ${
+                msg.isCurrentUser ? "bg-neo-orange text-white" : "bg-[#e0e0e0] text-neo-text"
+              }`}
             >
               {msg.initials}
             </div>
             <div
-              style={{
-                maxWidth: "65%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: msg.isCurrentUser ? "flex-end" : "flex-start",
-                gap: "4px",
-              }}
+              className={cn(
+                "max-w-[65%] flex flex-col gap-1",
+                msg.isCurrentUser ? "items-end" : "items-start"
+              )}
             >
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "8px",
-                  flexDirection: msg.isCurrentUser ? "row-reverse" : "row",
-                }}
+                className={cn(
+                  "flex items-baseline gap-2",
+                  msg.isCurrentUser ? "flex-row-reverse" : "flex-row"
+                )}
               >
+                <span className="text-xs text-[#999] font-mono">{msg.timestamp}</span>
                 <span
-                  style={{
-                    fontSize: "0.75rem",
-                    color: "#999",
-                    fontFamily: "var(--font-ibm), monospace",
-                  }}
-                >
-                  {msg.timestamp}
-                </span>
-                <span
-                  style={{
-                    fontWeight: 700,
-                    fontSize: "0.85rem",
-                    color: msg.isCurrentUser ? "#ff5c00" : "#0d0d0d",
-                    fontFamily: "var(--font-ibm), monospace",
-                  }}
+                  className={`font-bold text-[0.85rem] font-mono ${
+                    msg.isCurrentUser ? "text-neo-orange" : "text-neo-text"
+                  }`}
                 >
                   {msg.username}
                 </span>
               </div>
               <div
-                style={{
-                  backgroundColor: msg.isCurrentUser ? "#ffd6cc" : "#fff",
-                  border: "2px solid #000",
-                  padding: "10px 14px",
-                  fontSize: "0.875rem",
-                  fontFamily: "var(--font-ibm), monospace",
-                  color: "#0d0d0d",
-                  lineHeight: 1.6,
-                }}
+                className={`border-2 border-black py-2.5 px-3.5 text-sm font-mono text-neo-text leading-[1.6] ${
+                  msg.isCurrentUser ? "bg-neo-pink" : "bg-white"
+                }`}
               >
                 {msg.text}
               </div>
@@ -226,97 +130,43 @@ export default function DmPanel() {
       </div>
 
       {/* Input bar */}
-      <div style={{ borderTop: "2px dashed #ccc" }} />
-      <div
-        style={{
-          padding: "12px 20px",
-          borderTop: "2px solid #000",
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          backgroundColor: "#fff",
-          flexShrink: 0,
-          flexDirection: "column",
-        }}
-      >
-        <div style={{ display: "flex", width: "100%", alignItems: "center", gap: "8px" }}>
-          <button
-            style={{
-              width: "32px",
-              height: "32px",
-              border: "none",
-              backgroundColor: "transparent",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              flexShrink: 0,
-            }}
+      <div className="border-t-2 border-t-[#ccc] border-dashed" />
+      <div className="py-3 px-5 border-t-2 border-t-black flex items-center gap-2 bg-white shrink-0 flex-col">
+        <div className="flex w-full items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-8 h-8 border-none bg-transparent hover:bg-transparent shrink-0"
             aria-label="Attach"
           >
             <PlusCircle size={18} color="#555" />
-          </button>
-          <input
+          </Button>
+          <Input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
             placeholder="Type your message"
-            style={{
-              flex: 1,
-              border: "2px solid #000",
-              padding: "8px 12px",
-              fontFamily: "var(--font-ibm), monospace",
-              fontSize: "0.875rem",
-              outline: "none",
-              backgroundColor: "#fffdf5",
-            }}
+            className="flex-1 border-2 border-black py-2 px-3 font-mono text-sm outline-none bg-neo-bg rounded-none focus-visible:ring-0 focus-visible:ring-offset-0 h-auto"
           />
-          <button
-            style={{
-              width: "32px",
-              height: "32px",
-              border: "none",
-              backgroundColor: "transparent",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              flexShrink: 0,
-            }}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="w-8 h-8 border-none bg-transparent hover:bg-transparent shrink-0"
             aria-label="Emoji"
           >
             <Smile size={18} color="#555" />
-          </button>
-          <button
+          </Button>
+          <Button
             onClick={sendMessage}
-            style={{
-              width: "36px",
-              height: "36px",
-              border: "2px solid #000",
-              backgroundColor: "#ff5c00",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              boxShadow: "2px 2px 0 #000",
-              flexShrink: 0,
-            }}
+            size="icon"
+            className="w-9 h-9 border-2 border-black bg-neo-orange hover:bg-neo-orange shadow-neo-xs shrink-0 neo-btn-hover"
             aria-label="Send"
-            className="neo-btn-hover"
           >
             <Send size={14} color="#fff" />
-          </button>
+          </Button>
         </div>
-        <div
-          style={{
-            width: "100%",
-            textAlign: "center",
-            fontSize: "0.7rem",
-            color: "#999",
-            fontFamily: "var(--font-ibm), monospace",
-          }}
-        >
+        <div className="w-full text-center text-[0.7rem] text-[#999] font-mono">
           Bold text uses <strong>**</strong>
         </div>
       </div>

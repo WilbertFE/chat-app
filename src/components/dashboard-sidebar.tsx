@@ -16,7 +16,7 @@ interface DashboardSidebarProps {
 
 const navItems = [
   { key: "messages" as ActiveRoute, label: "Messages", icon: MessageSquare, href: "/messages" },
-  { key: "servers" as ActiveRoute, label: "Servers", icon: Grid3x3, href: "/dashboard" },
+  { key: "servers" as ActiveRoute, label: "Servers", icon: Grid3x3, href: "/servers" },
   { key: "profile" as ActiveRoute, label: "Profile", icon: User, href: "/profile" },
   { key: "help" as ActiveRoute, label: "Help", icon: HelpCircle, href: "/help" },
 ];

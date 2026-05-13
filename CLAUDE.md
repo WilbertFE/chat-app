@@ -8,6 +8,8 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 Always maintain the project structure.
 
+Always use tailwindcss for styling.
+
 Always use the design skill when changing the UI.
 
 if you are creating a new UI component, if it is reuseable place it in `src/components` and if it is specific for a page, place it in `src/app/{page}/components` directory.

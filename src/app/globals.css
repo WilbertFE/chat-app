@@ -36,6 +36,24 @@
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
+
+  /* Neobrutalism color utilities */
+  --color-neo-orange: #ff5c00;
+  --color-neo-yellow: #ffde00;
+  --color-neo-blue: #4fc3f7;
+  --color-neo-pink: #ffd6cc;
+  --color-neo-sidebar: #fde8e0;
+  --color-neo-bg: #fffdf5;
+  --color-neo-text: #0d0d0d;
+  --color-neo-muted: #555555;
+  --color-neo-green: #00c853;
+
+  /* Neobrutalism shadow utilities */
+  --shadow-neo-xs: 2px 2px 0px #000000;
+  --shadow-neo-sm: 3px 3px 0px #000000;
+  --shadow-neo: 4px 4px 0px #000000;
+  --shadow-neo-lg: 6px 6px 0px #000000;
+  --shadow-neo-xl: 8px 8px 0px #000000;
 }
 
 :root {

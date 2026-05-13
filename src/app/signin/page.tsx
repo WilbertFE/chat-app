@@ -1,12 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 import { LogIn } from "lucide-react";
 
 export default function SignInPage() {
-  const router = useRouter();
-
   return (
     <div
       style={{
@@ -63,7 +61,7 @@ export default function SignInPage() {
 
         {/* Google button */}
         <button
-          onClick={() => router.push("/dashboard")}
+          onClick={() => signIn("google", { callbackUrl: "/messages" })}
           style={{
             width: "100%",
             backgroundColor: "#fff",

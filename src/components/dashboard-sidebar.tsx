@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Home, MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus, Mic, Headphones } from "lucide-react";
+import { MessageSquare, Grid3x3, User, HelpCircle, LogOut, Plus, Mic, Headphones } from "lucide-react";
 import { currentUser } from "@/lib/mock-data";
 
-type ActiveRoute = "home" | "messages" | "servers" | "profile" | "help";
+type ActiveRoute = "messages" | "servers" | "profile" | "help";
 
 interface DashboardSidebarProps {
   activeRoute: ActiveRoute;
@@ -14,11 +14,10 @@ interface DashboardSidebarProps {
 }
 
 const navItems = [
-  { key: "home" as ActiveRoute, label: "Home", icon: Home, href: "/dashboard" },
   { key: "messages" as ActiveRoute, label: "Messages", icon: MessageSquare, href: "/messages" },
   { key: "servers" as ActiveRoute, label: "Servers", icon: Grid3x3, href: "/dashboard" },
   { key: "profile" as ActiveRoute, label: "Profile", icon: User, href: "/profile" },
-  { key: "help" as ActiveRoute, label: "Help", icon: HelpCircle, href: "#" },
+  { key: "help" as ActiveRoute, label: "Help", icon: HelpCircle, href: "/help" },
 ];
 
 export default function DashboardSidebar({

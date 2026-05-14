@@ -110,6 +110,7 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
               onChange={(e) => setUsername(e.target.value)}
               placeholder="your_username"
               autoFocus
+              disabled={submitting}
               className={`flex-1 border-2 border-black rounded-none font-mono text-[0.95rem] h-[46px] px-3 focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-black bg-white ${
                 error ? "border-red-500" : ""
               }`}
@@ -140,7 +141,8 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
             placeholder="Tell the community about yourself..."
             maxLength={500}
             rows={3}
-            className="border-2 border-black font-mono text-sm text-neo-text bg-white px-3 py-2.5 outline-none focus:border-black resize-none leading-[1.6]"
+            disabled={submitting}
+            className="border-2 border-black font-mono text-sm text-neo-text bg-white px-3 py-2.5 outline-none focus:border-black resize-none leading-[1.6] disabled:opacity-60"
           />
           <p className="font-mono text-[0.75rem] text-neo-muted text-right m-0">
             {about.length}/500

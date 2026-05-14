@@ -75,27 +75,33 @@ export default function DashboardSidebar({
 
       {/* Bottom user area */}
       <div className="border-t-2 border-t-black py-3 px-4 shrink-0">
-        <div className="flex items-center gap-2.5 mb-2">
-          <div className="relative w-10 h-10 border-2 border-black bg-neo-orange flex items-center justify-center shrink-0 font-bold text-white text-xs">
-            {currentUser.initials}
-            <span className="absolute -bottom-[3px] -right-[3px] w-2.5 h-2.5 bg-neo-green border-2 border-black rounded-full" />
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-bold text-[0.85rem] overflow-hidden text-ellipsis whitespace-nowrap">
-              {currentUser.name}
+        {currentUser.status === "loading" ? (
+          <div className="h-[68px]" />
+        ) : (
+          <>
+            <div className="flex items-center gap-2.5 mb-2">
+              <div className="relative w-10 h-10 border-2 border-black bg-neo-orange flex items-center justify-center shrink-0 font-bold text-white text-xs">
+                {currentUser.initials}
+                <span className="absolute -bottom-[3px] -right-[3px] w-2.5 h-2.5 bg-neo-green border-2 border-black rounded-full" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-[0.85rem] overflow-hidden text-ellipsis whitespace-nowrap">
+                  {currentUser.name}
+                </div>
+                <div className="text-xs text-neo-muted overflow-hidden text-ellipsis whitespace-nowrap">
+                  {currentUser.handle}
+                </div>
+              </div>
             </div>
-            <div className="text-xs text-neo-muted overflow-hidden text-ellipsis whitespace-nowrap">
-              {currentUser.handle}
-            </div>
-          </div>
-        </div>
-        <button
-          onClick={() => signOut({ callbackUrl: "/signin" })}
-          className="flex items-center gap-1.5 text-[0.8rem] text-neo-muted bg-transparent border-none p-0 cursor-pointer"
-        >
-          <LogOut size={14} />
-          Logout
-        </button>
+            <button
+              onClick={() => signOut({ callbackUrl: "/signin" })}
+              className="flex items-center gap-1.5 text-[0.8rem] text-neo-muted bg-transparent border-none p-0 cursor-pointer"
+            >
+              <LogOut size={14} />
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

@@ -21,10 +21,10 @@ export async function GET(request: NextRequest) {
   if (check !== null) {
     const { data } = await supabase
       .from("users")
-      .select("id")
+      .select("id, email")
       .eq("username", check)
       .maybeSingle();
-    return NextResponse.json({ available: !data });
+    return NextResponse.json({ available: !data || data.email === session.user.email });
   }
 
   const { data, error } = await supabase

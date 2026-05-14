@@ -28,7 +28,14 @@
       "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\" -Recurse -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
       "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\hooks\" -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
       "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\components\" -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
-      "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\\\\api\\\\auth\" -Recurse -ErrorAction SilentlyContinue)"
+      "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\\\\api\\\\auth\" -Recurse -ErrorAction SilentlyContinue)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(node -e \"const r = require\\('radix-ui'\\); console.log\\(Object.keys\\(r\\).filter\\(k => k.toLowerCase\\(\\).includes\\('dialog'\\)\\)\\)\")",
+      "Bash(node -e \"const { Dialog } = require\\('radix-ui'\\); console.log\\(Object.keys\\(Dialog\\)\\)\")",
+      "Bash(node -e \"const r = require\\('radix-ui'\\); console.log\\(Object.keys\\(r\\).filter\\(k => k.toLowerCase\\(\\).includes\\('avatar'\\)\\)\\)\")",
+      "Bash(node -e \"const { Avatar } = require\\('radix-ui'\\); console.log\\(Object.keys\\(Avatar\\)\\)\")",
+      "Bash(node -e \"const { Avatar } = require\\('radix-ui'\\); console.log\\(typeof Avatar.Image\\)\")"
     ]
   }
 }

@@ -73,7 +73,7 @@ export default function GlobalPanel() {
         {/* Message list */}
         {messages.map((msg) => (
           <div key={msg.id} className="flex gap-3 items-start py-1.5">
-            <UserAvatar initials={msg.initials} isCurrentUser={msg.isCurrentUser} size="md" />
+            <UserAvatar initials={msg.initials} isCurrentUser={msg.isCurrentUser} image={msg.isCurrentUser ? currentUser.image : undefined} size="md" />
             <div className="flex-1">
               <div className="flex items-baseline gap-2 mb-1">
                 <span

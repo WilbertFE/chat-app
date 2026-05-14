@@ -26,8 +26,19 @@ export default function ProfileHeader({ user, isOwner = false }: ProfileHeaderPr
     <>
       <div className="py-5 px-8 border-b-2 border-b-black flex items-end gap-5 bg-neo-bg relative">
         {/* Avatar */}
-        <div className="w-[100px] h-[100px] border-[3px] border-black shadow-neo bg-neo-orange flex items-center justify-center font-syne text-[2rem] text-white shrink-0 -mt-[50px] relative z-[1]">
-          {initials}
+        <div className="relative shrink-0 -mt-[50px] z-[1]">
+          <div className="w-[100px] h-[100px] border-[3px] border-black shadow-neo bg-neo-orange flex items-center justify-center font-syne text-[2rem] text-white overflow-hidden">
+            {user.avatar_url ? (
+              <img
+                src={user.avatar_url}
+                alt={initials}
+                referrerPolicy="no-referrer"
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              initials
+            )}
+          </div>
           <span className="absolute bottom-1 right-1 w-[14px] h-[14px] bg-neo-green border-2 border-black rounded-full" />
         </div>
 

@@ -1,7 +1,9 @@
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 type UserAvatarProps = {
   initials: string;
+  image?: string | null;
   isCurrentUser?: boolean;
   showOnlineDot?: boolean;
   offline?: boolean;
@@ -10,6 +12,7 @@ type UserAvatarProps = {
 
 export default function UserAvatar({
   initials,
+  image,
   isCurrentUser = false,
   showOnlineDot = false,
   offline = false,
@@ -17,38 +20,43 @@ export default function UserAvatar({
 }: UserAvatarProps) {
   const sizeClass = size === "md" ? "w-9 h-9" : "w-8 h-8";
 
-  const colorClass = offline
-    ? "border-[#999] bg-[#e0e0e0] text-[#999]"
+  const borderClass = offline ? "border-[#999]" : "border-black";
+  const bgClass = offline
+    ? "bg-[#e0e0e0]"
     : isCurrentUser
-    ? "border-black bg-neo-orange text-white"
-    : "border-black bg-[#e0e0e0] text-neo-text";
+    ? "bg-neo-orange"
+    : "bg-[#e0e0e0]";
+  const textClass = offline
+    ? "text-[#999]"
+    : isCurrentUser
+    ? "text-white"
+    : "text-neo-text";
+
+  const avatar = (
+    <Avatar
+      className={cn(
+        sizeClass,
+        "rounded-none border-2",
+        borderClass,
+        bgClass,
+        !showOnlineDot && "shrink-0"
+      )}
+    >
+      {image && <AvatarImage src={image} referrerPolicy="no-referrer" />}
+      <AvatarFallback className={cn("text-[0.65rem]", bgClass, textClass)}>
+        {initials}
+      </AvatarFallback>
+    </Avatar>
+  );
 
   if (showOnlineDot) {
     return (
       <div className="relative shrink-0">
-        <div
-          className={cn(
-            sizeClass,
-            "border-2 flex items-center justify-center font-bold text-[0.65rem] font-mono",
-            colorClass
-          )}
-        >
-          {initials}
-        </div>
+        {avatar}
         <span className="absolute -bottom-[2px] -right-[2px] w-[9px] h-[9px] bg-neo-green border-2 border-white rounded-full" />
       </div>
     );
   }
 
-  return (
-    <div
-      className={cn(
-        sizeClass,
-        "shrink-0 border-2 flex items-center justify-center font-bold text-[0.65rem] font-mono",
-        colorClass
-      )}
-    >
-      {initials}
-    </div>
-  );
+  return avatar;
 }

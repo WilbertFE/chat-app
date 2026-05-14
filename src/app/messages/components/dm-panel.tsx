@@ -92,7 +92,7 @@ export default function DmPanel() {
               msg.isCurrentUser ? "flex-row-reverse" : "flex-row"
             )}
           >
-            <UserAvatar initials={msg.initials} isCurrentUser={msg.isCurrentUser} size="md" />
+            <UserAvatar initials={msg.initials} isCurrentUser={msg.isCurrentUser} image={msg.isCurrentUser ? currentUser.image : undefined} size="md" />
             <div
               className={cn(
                 "max-w-[65%] flex flex-col gap-1",

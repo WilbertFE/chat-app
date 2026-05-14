@@ -80,8 +80,19 @@ export default function DashboardSidebar({
         ) : (
           <>
             <div className="flex items-center gap-2.5 mb-2">
-              <div className="relative w-10 h-10 border-2 border-black bg-neo-orange flex items-center justify-center shrink-0 font-bold text-white text-xs">
-                {currentUser.initials}
+              <div className="relative shrink-0">
+                <div className="w-10 h-10 border-2 border-black bg-neo-orange flex items-center justify-center font-bold text-white text-xs overflow-hidden">
+                  {currentUser.image ? (
+                    <img
+                      src={currentUser.image}
+                      alt={currentUser.initials}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    currentUser.initials
+                  )}
+                </div>
                 <span className="absolute -bottom-[3px] -right-[3px] w-2.5 h-2.5 bg-neo-green border-2 border-black rounded-full" />
               </div>
               <div className="flex-1 min-w-0">

@@ -2,14 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { createClient } from "@supabase/supabase-js";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { postUserSchema, patchUserSchema } from "@/lib/validations";
 import type { User } from "@/types/user";
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
-
-const USERNAME_REGEX = /^[a-zA-Z0-9_]{3,20}$/;
 
 export async function GET(request: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -47,15 +46,15 @@ export async function POST(request: NextRequest) {
   }
 
   const body = await request.json();
-  const { email, name, avatar_url, username } = body;
-
-  if (!email) {
-    return NextResponse.json({ error: "email is required" }, { status: 400 });
+  const result = postUserSchema.safeParse(body);
+  if (!result.success) {
+    return NextResponse.json(
+      { error: result.error.issues[0].message },
+      { status: 400 }
+    );
   }
 
-  if (username && !USERNAME_REGEX.test(username)) {
-    return NextResponse.json({ error: "Invalid username format" }, { status: 400 });
-  }
+  const { email, name, avatar_url, username } = result.data;
 
   const { data, error } = await supabase
     .from("users")
@@ -87,16 +86,17 @@ export async function PATCH(request: NextRequest) {
   }
 
   const body = await request.json();
-  const { username, onboarding_complete, name } = body;
+  const result = patchUserSchema.safeParse(body);
+  if (!result.success) {
+    return NextResponse.json(
+      { error: result.error.issues[0].message },
+      { status: 400 }
+    );
+  }
+
+  const { username, onboarding_complete, name } = result.data;
 
   if (username !== undefined) {
-    if (!USERNAME_REGEX.test(username)) {
-      return NextResponse.json(
-        { error: "Username must be 3–20 characters: letters, numbers, underscores only." },
-        { status: 400 }
-      );
-    }
-
     const { data: existing } = await supabase
       .from("users")
       .select("id, email")

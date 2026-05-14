@@ -6,13 +6,7 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
-import { z } from "zod";
-
-const usernameSchema = z
-  .string()
-  .min(3, "Must be at least 3 characters.")
-  .max(20, "Must be at most 20 characters.")
-  .regex(/^[a-zA-Z0-9_]+$/, "Letters, numbers, and underscores only.");
+import { usernameSchema } from "@/lib/validations";
 
 interface UsernameFormProps {
   initialUsername: string;

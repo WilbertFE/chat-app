@@ -20,7 +20,15 @@
       "Bash(npm run *)",
       "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\" -Recurse -Filter \"*.tsx\")",
       "PowerShell(Rename-Item *)",
-      "PowerShell(Copy-Item *)"
+      "PowerShell(Copy-Item *)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/global\" -UseBasicParsing -TimeoutSec 10 | Select-Object -ExpandProperty StatusCode)",
+      "PowerShell(Invoke-WebRequest -Uri \"http://localhost:3000/\" -UseBasicParsing -TimeoutSec 10 | Select-Object -ExpandProperty StatusCode)",
+      "PowerShell(Start-Sleep -Seconds 5; Invoke-WebRequest -Uri \"http://localhost:3000/global\" -UseBasicParsing -TimeoutSec 10 | Select-Object -ExpandProperty StatusCode)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\" -Recurse -Directory | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\" -Recurse -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\hooks\" -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
+      "PowerShell(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\components\" -File | Select-Object FullName | ForEach-Object { $_.FullName.Replace\\(\"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\\", \"\"\\) } | Sort-Object)",
+      "Bash(Get-ChildItem -Path \"E:\\\\\\(02\\) Work\\\\\\(02\\) Coding\\\\\\(01\\) NextJS\\\\chat-app\\\\src\\\\app\\\\api\\\\auth\" -Recurse -ErrorAction SilentlyContinue)"
     ]
   }
 }

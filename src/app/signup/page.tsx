@@ -32,7 +32,7 @@ export default function SignUpPage() {
 
         {/* Google button */}
         <Button
-          onClick={() => signIn("google", { callbackUrl: "/messages" })}
+          onClick={() => signIn("google", { callbackUrl: "/onboarding" })}
           className="w-full bg-white hover:bg-white border-2 border-black shadow-neo py-[14px] px-5 font-mono font-bold text-[0.85rem] text-neo-text tracking-[0.08em] uppercase neo-btn-hover rounded-none h-auto gap-[10px]"
         >
           <GoogleIcon />

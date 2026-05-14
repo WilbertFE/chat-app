@@ -21,7 +21,9 @@ export function useCurrentUser() {
   const email = session?.user?.email ?? null;
   const image = session?.user?.image ?? null;
   const initials = getInitials(session?.user?.name);
-  const handle = getHandle(email);
+  const handle = session?.user?.username
+    ? `@${session.user.username}`
+    : getHandle(email);
 
   return {
     id: email ?? mockUser.id,

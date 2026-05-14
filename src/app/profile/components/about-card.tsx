@@ -1,41 +1,29 @@
-"use client";
+import { User as UserIcon } from "lucide-react";
+import type { User } from "@/types/user";
 
-import { User } from "lucide-react";
-import { useCurrentUser } from "@/hooks/use-current-user";
+interface AboutCardProps {
+  user: User;
+}
 
-export default function AboutCard() {
-  const currentUser = useCurrentUser();
-
+export default function AboutCard({ user }: AboutCardProps) {
   return (
     <div className="border-2 border-black shadow-neo bg-white p-6 font-mono">
-      {/* Heading */}
       <div className="flex items-center gap-[10px] mb-3">
-        <User size={18} />
-        <h2 className="font-syne text-[1.1rem] m-0 tracking-[0.05em]">
-          ABOUT ME
-        </h2>
+        <UserIcon size={18} />
+        <h2 className="font-syne text-[1.1rem] m-0 tracking-[0.05em]">ABOUT ME</h2>
       </div>
 
       <div className="border-t-2 border-dashed border-[#ccc] mb-4" />
 
-      {/* Bio */}
-      <p className="text-[0.875rem] text-neo-text leading-[1.7] m-0 mb-4 whitespace-pre-line">
-        {currentUser.bio}
-      </p>
-
-      <div className="border-t-2 border-dashed border-[#ccc] mb-4" />
-
-      {/* Interest tags */}
-      <div className="flex flex-wrap gap-2">
-        {currentUser.interests.map((tag) => (
-          <span
-            key={tag}
-            className="border-2 border-black py-1 px-3 text-[0.75rem] font-medium text-neo-text bg-neo-bg"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      {user.about ? (
+        <p className="text-[0.875rem] text-neo-text leading-[1.7] m-0 whitespace-pre-line">
+          {user.about}
+        </p>
+      ) : (
+        <p className="text-[0.875rem] text-neo-muted leading-[1.7] m-0 italic">
+          No bio yet.
+        </p>
+      )}
     </div>
   );
 }

@@ -16,6 +16,7 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
   const router = useRouter();
   const { update } = useSession();
   const [username, setUsername] = useState(initialUsername);
+  const [about, setAbout] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [checking, setChecking] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -60,7 +61,11 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
     const res = await fetch("/api/users", {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username, onboarding_complete: true }),
+      body: JSON.stringify({
+        username,
+        onboarding_complete: true,
+        about: about.trim() || null,
+      }),
     });
 
     if (!res.ok) {
@@ -81,16 +86,17 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
           NEOCHAT
         </span>
         <h1 className="font-syne text-[2rem] m-0 text-neo-text leading-tight">
-          Choose your username.
+          Set up your profile.
         </h1>
         <p className="font-mono text-[0.85rem] text-neo-muted leading-[1.5] m-0">
-          This is how others will find and mention you. You can always change it later.
+          Choose a username and optionally tell the community about yourself.
         </p>
       </div>
 
       <div className="w-full border-t border-[#eee]" />
 
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Username */}
         <div className="flex flex-col gap-1.5">
           <label className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-neo-text">
             Username
@@ -119,6 +125,25 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
           )}
           <p className="font-mono text-[0.78rem] text-neo-muted m-0">
             3–20 characters. Letters, numbers, and underscores only.
+          </p>
+        </div>
+
+        {/* About (optional) */}
+        <div className="flex flex-col gap-1.5">
+          <label className="font-mono font-bold text-[0.8rem] uppercase tracking-[0.08em] text-neo-text">
+            About{" "}
+            <span className="text-neo-muted font-normal normal-case">(optional)</span>
+          </label>
+          <textarea
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+            placeholder="Tell the community about yourself..."
+            maxLength={500}
+            rows={3}
+            className="border-2 border-black font-mono text-sm text-neo-text bg-white px-3 py-2.5 outline-none focus:border-black resize-none leading-[1.6]"
+          />
+          <p className="font-mono text-[0.75rem] text-neo-muted text-right m-0">
+            {about.length}/500
           </p>
         </div>
 

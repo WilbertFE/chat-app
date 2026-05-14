@@ -1,18 +1,19 @@
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
+import { notFound } from "next/navigation";
 import { createClient } from "@supabase/supabase-js";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import DashboardSidebar from "@/components/dashboard-sidebar";
-import CoverBanner from "./components/cover-banner";
-import ProfileHeader from "./components/profile-header";
-import AboutCard from "./components/about-card";
-import StatsCards from "./components/stats-cards";
+import CoverBanner from "../components/cover-banner";
+import ProfileHeader from "../components/profile-header";
+import AboutCard from "../components/about-card";
+import StatsCards from "../components/stats-cards";
 import Footer from "@/components/footer";
 import type { User } from "@/types/user";
 
-export default async function ProfilePage() {
-  const session = await getServerSession(authOptions);
-  if (!session?.user?.email) redirect("/signin");
+interface Props {
+  params: Promise<{ username: string }>;
+}
+
+export default async function PublicProfilePage({ params }: Props) {
+  const { username } = await params;
 
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -22,10 +23,10 @@ export default async function ProfilePage() {
   const { data: user } = await supabase
     .from("users")
     .select("*")
-    .eq("email", session.user.email)
+    .eq("username", username)
     .single();
 
-  if (!user) redirect("/signin");
+  if (!user) notFound();
 
   return (
     <div
@@ -48,7 +49,7 @@ export default async function ProfilePage() {
 
       <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
         <CoverBanner />
-        <ProfileHeader user={user as User} isOwner />
+        <ProfileHeader user={user as User} isOwner={false} />
 
         <div
           style={{

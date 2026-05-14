@@ -6,4 +6,7 @@ export type User = {
   username: string | null;
   onboarding_complete: boolean;
   created_at: string;
+  about: string | null;
+  messages_sent: number;
+  servers_joined: number;
 };

@@ -1,6 +1,5 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { currentUser as mockUser } from "@/lib/mock-data";
 
 function getInitials(name: string | null | undefined): string {
   if (!name) return "?";
@@ -17,7 +16,7 @@ function getHandle(email: string | null | undefined): string {
 export function useCurrentUser() {
   const { data: session, status } = useSession();
 
-  const name = session?.user?.name ?? mockUser.name;
+  const name = session?.user?.name ?? "User";
   const email = session?.user?.email ?? null;
   const image = session?.user?.image ?? null;
   const initials = getInitials(session?.user?.name);
@@ -26,16 +25,12 @@ export function useCurrentUser() {
     : getHandle(email);
 
   return {
-    id: email ?? mockUser.id,
+    id: email ?? "anonymous",
     name,
     email,
     image,
     initials,
     handle,
-    role: mockUser.role,
-    bio: mockUser.bio,
-    interests: mockUser.interests,
-    stats: mockUser.stats,
     status,
   };
 }

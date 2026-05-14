@@ -94,7 +94,7 @@ export async function PATCH(request: NextRequest) {
     );
   }
 
-  const { username, onboarding_complete, name } = result.data;
+  const { username, onboarding_complete, name, about } = result.data;
 
   if (username !== undefined) {
     const { data: existing } = await supabase
@@ -112,6 +112,7 @@ export async function PATCH(request: NextRequest) {
   if (username !== undefined) updates.username = username;
   if (onboarding_complete !== undefined) updates.onboarding_complete = onboarding_complete;
   if (name !== undefined) updates.name = name;
+  if (about !== undefined) updates.about = about;
 
   const { data, error } = await supabase
     .from("users")

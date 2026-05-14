@@ -27,26 +27,21 @@ export const authOptions: AuthOptions = {
 
       if (!existing) {
         const username = await generateUniqueUsername(user.email, supabase);
+        const baseRecord = {
+          email: user.email,
+          name: user.name ?? null,
+          avatar_url: user.image ?? null,
+          created_at: new Date().toISOString(),
+          onboarding_complete: false,
+          messages_sent: 0,
+          servers_joined: 0,
+        };
         try {
-          await supabase.from("users").insert({
-            email: user.email,
-            name: user.name ?? null,
-            avatar_url: user.image ?? null,
-            created_at: new Date().toISOString(),
-            username,
-            onboarding_complete: false,
-          });
+          await supabase.from("users").insert({ ...baseRecord, username });
         } catch {
           // Unique constraint race condition — append a fresh suffix and retry
           const suffix = Math.random().toString(36).slice(2, 7);
-          await supabase.from("users").insert({
-            email: user.email,
-            name: user.name ?? null,
-            avatar_url: user.image ?? null,
-            created_at: new Date().toISOString(),
-            username: `${username}_${suffix}`,
-            onboarding_complete: false,
-          });
+          await supabase.from("users").insert({ ...baseRecord, username: `${username}_${suffix}` });
         }
       }
 
@@ -55,9 +50,9 @@ export const authOptions: AuthOptions = {
 
     async jwt({ token, trigger, session }) {
       if (trigger === "update" && session) {
-        token.username = session.username ?? token.username;
-        token.onboarding_complete =
-          session.onboarding_complete ?? token.onboarding_complete;
+        if (session.username !== undefined) token.username = session.username;
+        if (session.onboarding_complete !== undefined) token.onboarding_complete = session.onboarding_complete;
+        if (session.name !== undefined) token.name = session.name;
         return token;
       }
 

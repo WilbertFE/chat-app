@@ -17,4 +17,5 @@ export const patchUserSchema = z.object({
   username: usernameSchema.optional(),
   onboarding_complete: z.boolean().optional(),
   name: z.string().min(1).max(100).optional(),
+  about: z.string().max(500).nullable().optional(),
 });

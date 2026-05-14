@@ -1,11 +1,20 @@
-"use client";
-
 import { MessageSquare, Users, Calendar } from "lucide-react";
-import { useCurrentUser } from "@/hooks/use-current-user";
+import type { User } from "@/types/user";
 
-export default function StatsCards() {
-  const currentUser = useCurrentUser();
+function formatCount(n: number): string {
+  if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
+  return String(n);
+}
 
+function formatMemberSince(iso: string): string {
+  return new Date(iso).toLocaleDateString("en-US", { month: "short", year: "numeric" });
+}
+
+interface StatsCardsProps {
+  user: User;
+}
+
+export default function StatsCards({ user }: StatsCardsProps) {
   return (
     <div className="flex flex-col gap-4">
       {/* Messages Sent */}
@@ -14,7 +23,7 @@ export default function StatsCards() {
           MESSAGES SENT
         </div>
         <div className="font-syne text-[3rem] text-neo-text leading-none">
-          {currentUser.stats.messagesSent}
+          {formatCount(user.messages_sent ?? 0)}
         </div>
         <MessageSquare
           size={64}
@@ -28,7 +37,7 @@ export default function StatsCards() {
           SERVERS JOINED
         </div>
         <div className="font-syne text-[3rem] text-neo-text leading-none">
-          {currentUser.stats.serversJoined}
+          {user.servers_joined ?? 0}
         </div>
         <Users
           size={64}
@@ -43,10 +52,9 @@ export default function StatsCards() {
             MEMBER SINCE
           </div>
           <div className="font-syne text-[1.8rem] text-neo-text leading-none">
-            {currentUser.stats.memberSince}
+            {formatMemberSince(user.created_at)}
           </div>
         </div>
-        {/* Orange calendar icon box */}
         <div className="ml-auto w-[52px] h-[52px] border-2 border-black bg-neo-orange flex items-center justify-center shrink-0">
           <Calendar size={24} color="#fff" />
         </div>

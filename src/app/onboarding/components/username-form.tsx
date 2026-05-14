@@ -6,8 +6,13 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
+import { z } from "zod";
 
-const USERNAME_REGEX = /^[a-zA-Z0-9_]{3,20}$/;
+const usernameSchema = z
+  .string()
+  .min(3, "Must be at least 3 characters.")
+  .max(20, "Must be at most 20 characters.")
+  .regex(/^[a-zA-Z0-9_]+$/, "Letters, numbers, and underscores only.");
 
 interface UsernameFormProps {
   initialUsername: string;
@@ -28,8 +33,9 @@ export default function UsernameForm({ initialUsername }: UsernameFormProps) {
       return;
     }
 
-    if (!USERNAME_REGEX.test(username)) {
-      setError("3–20 characters: letters, numbers, underscores only.");
+    const result = usernameSchema.safeParse(username);
+    if (!result.success) {
+      setError(result.error.issues[0].message);
       setChecking(false);
       return;
     }

@@ -21,7 +21,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (isPublic && sessionToken) {
-    return NextResponse.redirect(new URL("/messages", request.url));
+    return NextResponse.redirect(new URL("/global", request.url));
   }
 
   // Decrypt JWT only for /onboarding — redirect already-onboarded users to /global
